@@ -6,10 +6,22 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { useEffect, useState } from "react";
+
 
 
 const DashboardStudent = () => {
-  
+    const [students, setStudents] = useState([]);
+
+    useEffect(() => {
+      fetch("https://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+        .then((data) => {
+          setStudents(data);
+          console.log(data);
+        })
+        .catch((error) => console.error("Fetch error:", error));
+    }, []);
 
   return (
     <div> 
@@ -23,28 +35,22 @@ const DashboardStudent = () => {
           aria-label="Username"
           aria-describedby="basic-addon1"
         />
-      </InputGroup>
-      <Card className="text-center card">
-      <Card.Header>2ème année</Card.Header>
-      <Card.Body>
-        <Card.Title>Nom Prénom</Card.Title>
-        <Card.Text className="blockquote-footer">
-          Entreprise
-        </Card.Text>
-        <Card.Text className="blockquote-footer">
-          mail
-        </Card.Text>
-        <Card.Text className="blockquote-footer">
-          Numéro tél
-        </Card.Text>
-        <Card.Text className="blockquote-footer">
-          Date de naissance
-        </Card.Text>
-        <Button variant="primary">Go somewhere</Button>
-      </Card.Body>
-      <Card.Footer  style={{backgroundColor: "green", color: "white"}}>Réussite</Card.Footer>
-    </Card>
+      </InputGroup>   
 </div>
+
+<div className="card-container">
+        {students.map((student) => (
+          <Card key={student.id} className="text-center">
+            <Card.Header>{student.name}</Card.Header>
+            <Card.Body>
+              <Card.Text>Email: {student.email}</Card.Text>
+              <Card.Text>Phone: {student.phone}</Card.Text>
+             
+              <Button variant="primary">Details</Button>
+            </Card.Body>
+          </Card>
+        ))}
+      </div>
     </div>
   );
 };
