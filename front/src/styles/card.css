@@ -1,3 +1,12 @@
 .card{
 margin: 30px 30% 0px 30%;
 }
+.blockquote-footer{
+    margin-top: 5%;
+    display: flex;
+   margin-left: 30%;
+  }
+
+  .text-muted{
+    color: green;
+  }

@@ -25,15 +25,24 @@ const DashboardStudent = () => {
         />
       </InputGroup>
       <Card className="text-center card">
-      <Card.Header>Featured</Card.Header>
+      <Card.Header>2ème année</Card.Header>
       <Card.Body>
-        <Card.Title>Special title treatment</Card.Title>
-        <Card.Text>
-          With supporting text below as a natural lead-in to additional content.
+        <Card.Title>Nom Prénom</Card.Title>
+        <Card.Text className="blockquote-footer">
+          Entreprise
+        </Card.Text>
+        <Card.Text className="blockquote-footer">
+          mail
+        </Card.Text>
+        <Card.Text className="blockquote-footer">
+          Numéro tél
+        </Card.Text>
+        <Card.Text className="blockquote-footer">
+          Date de naissance
         </Card.Text>
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>
-      <Card.Footer className="text-muted">2 days ago</Card.Footer>
+      <Card.Footer  style={{backgroundColor: "green", color: "white"}}>Réussite</Card.Footer>
     </Card>
 </div>
     </div>
