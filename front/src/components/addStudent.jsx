@@ -7,7 +7,7 @@ const AddStudent = () => {
 
   return (
     <div> 
-      <h1>add student</h1>
+      <h2 className='title'>Ajouter un élève</h2>
     </div>
   );
 };
