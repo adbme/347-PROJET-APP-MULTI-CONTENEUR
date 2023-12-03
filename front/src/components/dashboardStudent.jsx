@@ -46,7 +46,7 @@ const DashboardStudent = () => {
               <Card.Text>Email: {student.email}</Card.Text>
               <Card.Text>Phone: {student.phone}</Card.Text>
              
-              <Button variant="primary">Details</Button>
+              <Button variant="primary" style={{backgroundColor: "red", border: "none", color: "white"}}>Supprimer</Button>
             </Card.Body>
           </Card>
         ))}
