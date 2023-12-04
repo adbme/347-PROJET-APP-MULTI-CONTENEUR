@@ -10,3 +10,17 @@ margin: 30px 30% 0px 30%;
   .text-muted{
     color: green;
   }
+
+  @media only screen and (max-width: 778px) {
+    .card{
+        width: 80%;
+        margin: 30px 10% 0px 10%;
+      }
+  }
+
+  @media only screen and (max-width: 420px) {
+    .card{
+        width: 100%;
+        margin: 0%;
+      }
+  }
