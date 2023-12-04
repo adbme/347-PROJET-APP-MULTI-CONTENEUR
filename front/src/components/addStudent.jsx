@@ -155,7 +155,7 @@ const AddStudent = () => {
                 placeholder="Entrez l'année d'apprentissage"
                 name="anneeApprentissage"
                 value={newStudent.anneeApprentissage}
-                min={0}
+                min={1}
                 max={4}
                 onChange={handleInputChange}
               />

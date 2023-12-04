@@ -4,7 +4,7 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faSearch, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { useEffect, useState } from "react";
 
@@ -31,7 +31,7 @@ const DashboardStudent = () => {
         <InputGroup className="mb-3">
         <InputGroup.Text id="basic-addon1"><FontAwesomeIcon icon={faSearch}  /></InputGroup.Text>
         <Form.Control
-          placeholder="Username"
+          placeholder="Rechercher un élève"
           aria-label="Username"
           aria-describedby="basic-addon1"
         />
@@ -46,7 +46,7 @@ const DashboardStudent = () => {
               <Card.Text>Email: {student.email}</Card.Text>
               <Card.Text>Phone: {student.phone}</Card.Text>
              
-              <Button variant="primary" style={{backgroundColor: "red", border: "none", color: "white"}}>Supprimer</Button>
+              <Button variant="primary" style={{backgroundColor: "red", border: "none", color: "white"}}><FontAwesomeIcon icon={faTrash}  /> Supprimer</Button>
             </Card.Body>
           </Card>
         ))}
