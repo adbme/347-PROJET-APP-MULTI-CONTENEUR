@@ -3,6 +3,7 @@ import { useState } from "react";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Form from 'react-bootstrap/Form';
+import Spinner from 'react-bootstrap/Spinner';
 import Alert from 'react-bootstrap/Alert';
 
 const AddStudent = () => {
@@ -26,6 +27,11 @@ const AddStudent = () => {
    let error = document.getElementById("message")
     error.innerHTML ="Remplissez tout les champs !"
     error.className = "error"
+    
+    setTimeout(() => {
+      error.className =""
+  }, 3000);
+  
   }
 
   
@@ -57,7 +63,6 @@ const AddStudent = () => {
   return (
     <div>
       <h2 className="title">Ajouter un élève</h2>
-      <h3>Test api élèves:</h3>
 
       <p id="message"></p>
       <Card className="text-center">
