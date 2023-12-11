@@ -13,16 +13,20 @@ def create_eleve():
         entreprise=data.get('entreprise', ''),
         email=data['email'],
         numero=data.get('numero', ''),
-        date_naissance=data['date_naissance'],
-        annee_apprentissage=data['annee_apprentissage'],
-        statut=data['statut']
+        date_naissance=data.get('date_naissance', ''),
+        annee_apprentissage=data.get('annee_apprentissage', ''),
+        statut=data.get('statut', '')
     )
     db.session.add(new_eleve)
-    db.session.commit()
-    return jsonify({"message": "Élève créé avec succès"}), 201
+    try:
+        db.session.commit()
+        return jsonify(new_eleve.to_dict()), 201
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": str(e)}), 500
 
 @eleves_api.route('/eleves', methods=['GET'])
 def get_eleves():
     eleves_list = Eleve.query.all()
-    eleves = [{"nom": e.nom, "prenom": e.prenom, "email": e.email} for e in eleves_list]
+    eleves = [e.to_dict() for e in eleves_list]
     return jsonify(eleves)
