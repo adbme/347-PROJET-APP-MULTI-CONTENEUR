@@ -1,24 +1,15 @@
-from flask import Flask, jsonify, request
-from flask_mysqldb import MySQL
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///eleves.db'
+db = SQLAlchemy(app)
 
-# Configuration de la base de données
-app.config['MYSQL_HOST'] = 'localhost'
-app.config['MYSQL_USER'] = 'user'
-app.config['MYSQL_PASSWORD'] = 'password'
-app.config['MYSQL_DB'] = 'votre_base_de_donnees'
+from models.eleve import Eleve
+from api.eleves import eleves_api
 
-mysql = MySQL(app)
-
-# Exemple de route
-@app.route('/api/data', methods=['GET'])
-def get_data():
-    cur = mysql.connection.cursor()
-    cur.execute("SELECT * FROM votre_table")
-    data = cur.fetchall()
-    cur.close()
-    return jsonify(data)
+app.register_blueprint(eleves_api, url_prefix='/api')
 
 if __name__ == '__main__':
+    db.create_all()
     app.run(debug=True)
