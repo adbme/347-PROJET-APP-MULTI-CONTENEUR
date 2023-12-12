@@ -14,7 +14,7 @@ const DashboardStudent = () => {
     const [students, setStudents] = useState([]);
 
     useEffect(() => {
-      fetch("https://jsonplaceholder.typicode.com/users")
+      fetch("http://localhost:5000/students")
         .then((response) => response.json())
         .then((data) => {
           setStudents(data);
