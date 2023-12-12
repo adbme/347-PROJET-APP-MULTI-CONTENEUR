@@ -2,8 +2,8 @@ import pymysql.cursors
 
 # Connexion à la base de données
 connection = pymysql.connect(host='localhost',
-                             user='votre_user',
-                             password='votre_password',
+                             user='root',
+                             password='Jesaispas7',
                              database='DB_EPSIC_Students',
                              cursorclass=pymysql.cursors.DictCursor)
 
