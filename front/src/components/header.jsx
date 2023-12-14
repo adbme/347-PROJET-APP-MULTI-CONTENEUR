@@ -22,7 +22,7 @@ function Header() {
             
             </Nav.Item>
             <Nav.Item>
-            <Nav.Link href="/addStudent"><FontAwesomeIcon icon={faAdd}  /> Ajouter un élève</Nav.Link></Nav.Item>
+            </Nav.Item>
             
             
           </Nav>
