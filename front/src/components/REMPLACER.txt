@@ -1,0 +1,32 @@
+// FAUT REMETTRE CETTE DEMER
+//     const express = require('express');
+// const cors = require('cors');
+// const app = express();
+// const port = 5000;
+
+// app.use(cors()); // Enable CORS for all routes
+
+// // Your other routes and middleware
+
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
+
+
+
+    // FAUT REMETTRE
+    // <Card key={student.id} className="text-center">
+    //     <Card.Header>{student.Nom} {student.Prenom}</Card.Header>
+    //     <Card.Body>
+    //         <Card.Text>Email: {student.Email}</Card.Text>
+    //         <Card.Text>Téléphone: {student.NumeroTel}</Card.Text>
+    //         <Card.Text>Entreprise: {student.Entreprise}</Card.Text>
+    //         <Card.Text>Date de Naissance: {student.DateNaissance}</Card.Text>
+    //         <Card.Text>Année d'apprentissage: {student.AnneeApprentissage}</Card.Text>
+    //         <Card.Text>Statut: {student.Statut === 'echec' ? 'Échec' : 'Réussite'}</Card.Text>
+    //         <Button variant="primary" style={{ backgroundColor: "red", border: "none", color: "white" }}>
+    //             <FontAwesomeIcon icon={faTrash} /> Supprimer
+    //         </Button>
+    //     </Card.Body>
+    // </Card>
+
