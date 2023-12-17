@@ -9,9 +9,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
+const express = require("express");
+const cors = require("cors");
+const app = express();
+const port = 5000;
+
+app.use(cors()); // Enable CORS for all routes
+
+// Your other routes and middleware
+
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
 const DashboardStudent = () => {
   const renderTooltip = (props) => (
-    <Tooltip style={{backgroundColor: '#FF9494', color:'white'}} id="button-tooltip" {...props}>
+    <Tooltip
+      style={{ backgroundColor: "#FF9494", color: "white" }}
+      id="button-tooltip"
+      {...props}
+    >
       Pas disponible pour le moment
     </Tooltip>
   );
@@ -55,28 +72,30 @@ const DashboardStudent = () => {
       <div className="card-container">
         {filteredStudents.map((student) => (
           <Card key={student.id} className="text-center">
-            <Card.Header>{student.name}</Card.Header>
+            <Card.Header>
+              {student.Nom} {student.Prenom}
+            </Card.Header>
             <Card.Body>
-              <Card.Text>Nom : {student.name}</Card.Text>
-              <Card.Text>Email: {student.email}</Card.Text>
-              <Card.Text>Phone: {student.phone}</Card.Text>
-
-              <OverlayTrigger
-                placement="right"
-                delay={{ show: 250, hide: 400 }}
-                overlay={renderTooltip}
+              <Card.Text>Email: {student.Email}</Card.Text>
+              <Card.Text>Téléphone: {student.NumeroTel}</Card.Text>
+              <Card.Text>Entreprise: {student.Entreprise}</Card.Text>
+              <Card.Text>Date de Naissance: {student.DateNaissance}</Card.Text>
+              <Card.Text>
+                Année d'apprentissage: {student.AnneeApprentissage}
+              </Card.Text>
+              <Card.Text>
+                Statut: {student.Statut === "echec" ? "Échec" : "Réussite"}
+              </Card.Text>
+              <Button
+                variant="primary"
+                style={{
+                  backgroundColor: "red",
+                  border: "none",
+                  color: "white",
+                }}
               >
-                <Button
-                  variant="primary"
-                  style={{
-                    backgroundColor: "red",
-                    border: "none",
-                    color: "white",
-                  }}
-                >
-                  <FontAwesomeIcon icon={faTrash} /> Supprimer
-                </Button>
-              </OverlayTrigger>
+                <FontAwesomeIcon icon={faTrash} /> Supprimer
+              </Button>
             </Card.Body>
           </Card>
         ))}
