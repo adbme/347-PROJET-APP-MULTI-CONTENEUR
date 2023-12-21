@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import "../styles/card.css"
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { faSearch, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import "../styles/card.css";
+import { useEffect, useState } from "react";
 
 const DashboardStudent = () => {
     const [students, setStudents] = useState([]);
@@ -28,19 +28,8 @@ app.listen(port, () => {
         fetch("http://localhost:5000/students")
             .then((response) => response.json())
             .then((data) => {
-                // Supposons que les données sont un tableau de tableaux, nous les convertissons en objets
-                const studentsData = data.map((student) => ({
-                    id: student[0],
-                    Nom: student[1],
-                    Prenom: student[2],
-                    Email: student[4],
-                    NumeroTel: student[5],
-                    Entreprise: student[3],
-                    DateNaissance: student[6],
-                    AnneeApprentissage: student[7],
-                    Statut: student[8]
-                }));
-                setStudents(studentsData);
+                setStudents(data);
+                console.log(data);
             })
             .catch((error) => console.error("Fetch error:", error));
     }, []);
@@ -48,6 +37,7 @@ app.listen(port, () => {
     return (
         <div>
             <h2 className='title'>Dashboard élèves</h2>
+
             <div className="container">
                 <InputGroup className="mb-3">
                     <InputGroup.Text id="basic-addon1"><FontAwesomeIcon icon={faSearch} /></InputGroup.Text>
@@ -58,18 +48,19 @@ app.listen(port, () => {
                     />
                 </InputGroup>
             </div>
+
             <div className="card-container">
                 {students.map((student) => (
                     <Card key={student.id} className="text-center">
-                        <Card.Header>{student.Nom} {student.Prenom}</Card.Header>
+                        <Card.Header>{student.nom} {student.prenom}</Card.Header>
                         <Card.Body>
-                            <Card.Text>Email: {student.Email}</Card.Text>
-                            <Card.Text>Téléphone: {student.NumeroTel}</Card.Text>
-                            <Card.Text>Entreprise: {student.Entreprise}</Card.Text>
-                            <Card.Text>Date de Naissance: {new Date(student.DateNaissance).toLocaleDateString()}</Card.Text>
-                            <Card.Text>Année d'apprentissage: {student.AnneeApprentissage}</Card.Text>
-                            <Card.Text>Statut: {student.Statut === 'echec' ? 'Échec' : 'Réussite'}</Card.Text>
-                            <Button variant="primary" style={{ backgroundColor: "red", border: "none", color: "white" }}>
+                            <Card.Text>Email: {student.mail}</Card.Text>
+                            <Card.Text>Téléphone: {student.num}</Card.Text>
+                            <Card.Text>Entreprise: {student.entreprise}</Card.Text>
+                            <Card.Text>Date de Naissance: {student.dateNaiss}</Card.Text>
+                            <Card.Text>Année d'apprentissage: {student.annee_apprentissage}</Card.Text>
+                            <Card.Text>Statut: {student.statut === 'echec' ? 'Échec' : 'Réussite'}</Card.Text>
+                            <Button variant="primary" style={{backgroundColor: "red", border: "none", color: "white"}}>
                                 <FontAwesomeIcon icon={faTrash} /> Supprimer
                             </Button>
                         </Card.Body>
